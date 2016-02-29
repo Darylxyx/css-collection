@@ -1,0 +1,117 @@
+html, body, h1, h2, h3, h4, h5, h6, p, span, div, a, ul, li{
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	overflow: scroll;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #1d1f27;
+	font-family: "Helvetica","KaiTi","微软雅黑";
+}
+
+ul li, ol li {
+	list-style-type: none;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.bgImg {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.l {
+	float: left;
+}
+
+.r {
+	float: right;
+}
+
+.hide {
+	visibility: hidden;
+}
+
+.page0 {
+	background-image: url(../resource/images/1.jpg);
+}
+
+.page1 {
+	background-image: url(../resource/images/2.jpg);
+}
+
+.page2 {
+	background-image: url(../resource/images/3.jpg);
+}
+
+.page3 {
+	background-image: url(../resource/images/4.jpg);
+}
+
+.page4 {
+	background-image: url(../resource/images/5.jpg);
+}
+
+.page5 {
+	background-image: url(../resource/images/6.jpg);
+}
+
+.turn-btn {
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	z-index: 3;
+	top: 50%;
+	margin-top: -35px;
+	background-image: url(../resource/images/arrow.png);
+	-webkit-transition: 0.3s ease-in-out;
+	-moz-transition: 0.3s ease-in-out;
+	-o-transition: 0.3s ease-in-out;
+	transition: 0.3s ease-in-out;
+	-webkit-transition-property: left,right;
+	-moz-transition-property: left,right;
+	-o-transition-property: left,right;
+	transition-property: left,right;
+	border-radius: 35px;
+}
+
+.turn-btn:active {
+	margin-top: -33px;
+}
+
+.turn-btn:hover {
+	cursor: pointer;
+}
+
+.prev-btn {
+	left: -100px;
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.next-btn {
+	right: -100px;
+}
+
+.content:hover .prev-btn {
+	left: 50px;
+}
+
+.content:hover .next-btn {
+	right: 50px;
+}

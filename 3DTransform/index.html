@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-cn" class="no-js">
+  <head>
+    <meta http-equiv="pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control " content="no-cache,must-revalidate"> 
+    <meta name="description" content="">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <title>3DTransform</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/animation.css">
+    <body>
+        <div class="content">
+            <div class="page-perspective">
+                <div class="page bgImg page0"></div>
+                <div class="page bgImg page1"></div>
+                <div class="page bgImg page2"></div>
+                <div class="page bgImg page3"></div>
+                <div class="page bgImg page4"></div>
+                <div class="page bgImg page5"></div>
+                <div class="turn-btn prev-btn bgImg" data-type="0"></div>
+                <div class="turn-btn next-btn bgImg" data-type="1"></div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="./common/jquery.min.js"></script>
+    <script type="text/javascript" src="./common/modernizr.custom.js"></script>
+    <script type="text/javascript" src="./common/sea.js"></script>
+    <script type="text/javascript">
+        seajs.config({
+            base: './js'
+        });
+        seajs.use('index');
+    </script>
+  </body>
+</html>
