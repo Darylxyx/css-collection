@@ -13,6 +13,7 @@ html, body {
 	position: relative;
 	background-color: #1d1f27;
 	font-family: "Helvetica","KaiTi","微软雅黑";
+	/*text-align: center;*/
 }
 
 ul li, ol li {
@@ -115,3 +116,38 @@ ul li, ol li {
 .content:hover .next-btn {
 	right: 50px;
 }
+
+.point-list {
+	z-index: 3;
+	overflow: hidden;
+	display: inline;
+	position: absolute;
+	left: 50%;
+	margin-left: -56px;
+	bottom: 100px;
+}
+
+.point-list li {
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-right: 8px;
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 6px;
+}
+
+.point-list li:last-child {
+	margin: 0;
+}
+
+.point {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	background-color: #fff;
+	border-radius: 6px;
+}
+
+/*.checked-point {
+	background-color: #fff !important;
+}*/

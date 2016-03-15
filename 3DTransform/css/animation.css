@@ -13,9 +13,7 @@
 	overflow: hidden;
 	visibility: hidden;
 	text-align: center;
-	background-position: top;
 	/*background-repeat: no-repeat;*/
-	background-size: 100% auto;
 	/*display: none;*/
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;

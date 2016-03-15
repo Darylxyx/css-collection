@@ -9,11 +9,17 @@ define(function(require, exports, module) {
 
 			this.$page = $page; //page集合
 
+			this.$point = $('.point');
+
+			// this.$pointList = $('.point-list').find('li');
+
 			this.$page.each(function(index, item) {
 				$(item).data('originalClassList', $(item).attr('class'));
 			});
 
 			this.$page.eq(0).addClass('page-current');
+
+			// this.$pointList.eq(0).addClass('checked-point');
 
 			this.isAnimating = false;
 		},
@@ -62,7 +68,7 @@ define(function(require, exports, module) {
 					current = 0;
 				}
 			} else if (type == 0) { //上一页
-				if (current > 1) {
+				if (current > 0) {
 					current --;
 				} else {
 					current = pageCount - 1;
@@ -71,6 +77,8 @@ define(function(require, exports, module) {
 
 			var $inPage = $page.eq(current);
 			$inPage.addClass('page-current');
+
+			_this._checkPoint(current);
 
 			$outPage.addClass(animationOutName).on(animationEventName, function() {
 				$outPage.off(animationEventName).attr('class', $outPage.data('originalClassList'));
@@ -103,6 +111,12 @@ define(function(require, exports, module) {
 				_this._turnPage(current, animatName, type);
 			}
 		},
+
+		_checkPoint: function(current) {
+			this.$point.animate({
+				marginLeft: current * 20
+			},300,'linear');
+		}
 	};
 
 	module.exports = a;
