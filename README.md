@@ -1,2 +1,2 @@
-# CSS3
+# css-collection
 
