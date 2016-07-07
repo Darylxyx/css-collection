@@ -40,11 +40,11 @@ html, body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	-webkit-filter: blur(10px);
-	-moz-filter: blur(10px);
-	-ms-filter: blur(10px);
-	-o-filter: blur(10px);
-	filter: blur(10px);
+	-webkit-filter: blur(20px);
+	-moz-filter: blur(20px);
+	-ms-filter: blur(20px);
+	-o-filter: blur(20px);
+	filter: blur(20px);
 	z-index: -3;
 	margin: -30px;
 	background-image: url(./resource/images/bg1.jpg);
