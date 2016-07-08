@@ -1,4 +1,4 @@
-# Css Collection
+# CSS Collection
 ### 3DTransform
 [DEMO](https://darylxyx.github.io/Demo/3DTransform/)
 
