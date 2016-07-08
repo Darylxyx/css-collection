@@ -1,6 +1,6 @@
-# css-collection
+# Css Collection
 ### 3DTransform
-[Demo](https://darylxyx.github.io/Demo/3DTransform/)
+[DEMO](https://darylxyx.github.io/Demo/3DTransform/)
 
 ### blur
-[Demo](https://darylxyx.github.io/Demo/blur/)
+[DEMO](https://darylxyx.github.io/Demo/blur/)
