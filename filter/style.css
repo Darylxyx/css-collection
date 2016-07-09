@@ -1,0 +1,85 @@
+html, body, div, h1, h2, h3, h4, h5, h6, p, span, img, input, ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	text-align: center;
+	background-color: #f7f7f7;
+}
+
+ul, ol, li {
+	list-style-type: none;
+}
+
+.bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	background: url(./resource/images/bg.jpg) center / cover;
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-ms-filter: blur(5px);
+	-o-filter: blur(5px);
+	filter: blur(5px);
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 2;
+}
+
+.container ul {
+	/*width: 100%;*/
+	padding-top: 10%;
+	display: inline-block;
+}
+
+.container li {
+	width: 15vw;
+	margin: 20px;
+	float: left;
+}
+
+.card {
+	width: 100%;
+	padding-bottom: 150%;
+	/*height: 100%;*/
+	background-size: cover;
+	background-position: center top;
+	border-radius: 8px;
+	box-shadow: 0 0 20px rgba(255,255,255,0.4);
+	-webkit-transition: all ease-out 0.5s;
+	-moz-transition: all ease-out 0.5s;
+	-ms-transition: all ease-out 0.5s;
+	-o-transition: all ease-out 0.5s;
+	transition: all ease-out 0.5s;
+	-webkit-filter: sepia(1) saturate(0.5);
+	-moz-filter: sepia(1) saturate(0.5);
+	-ms-filter: sepia(1) saturate(0.5);
+	-o-filter: sepia(1) saturate(0.5);
+	filter: sepia(1) saturate(0.5);
+}
+
+.container li:hover .card {
+	-webkit-filter: none;
+	-moz-filter: none;
+	-ms-filter: none;
+	-o-filter: none;
+	filter: none;
+	-webkit-transform-origin: center 60%;
+	-moz-transform-origin: center 60%;
+	-ms-transform-origin: center 60%;
+	-o-transform-origin: center 60%;
+	transform-origin: center 60%;
+	-webkit-transform: scale(1.2) rotateY(180deg);
+	-moz-transform: scale(1.2) rotateY(180deg);
+	-ms-transform: scale(1.2) rotateY(180deg);
+	-o-transform: scale(1.2) rotateY(180deg);
+	transform: scale(1.2) rotateY(180deg);
+}
