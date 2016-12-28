@@ -1,0 +1,108 @@
+html, body, div, h1, h2, h3, h4, h5, h6, p, span, img, input, textarea, ul, ol, li, hr {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	font-size: 12px;
+	font-family: '微软雅黑', Arial, Helvetica;
+}
+
+ul, ol {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.l {
+	float: left;
+}
+
+.r {
+	float: right;
+}
+
+.bg-img {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.ic-img {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.f-13 {
+	font-size: 13px;
+}
+
+.f-14 {
+	font-size: 14px;
+}
+
+.f-15 {
+	font-size: 15px;
+}
+
+.f-18 {
+	font-size: 18px;
+}
+
+.f-bold {
+	font-weight: bold;
+}
+
+.c-white {
+	color: #fff;
+}
+
+.lh-130 {
+	line-height: 130%;
+}
+
+.lh-140 {
+	line-height: 140%;
+}
+
+.lh-150 {
+	line-height: 150%;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.border-box {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.clear {
+	clear: both;
+}
+
+.overflow {
+	overflow: hidden;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-overflow {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
