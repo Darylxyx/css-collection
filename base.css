@@ -106,3 +106,8 @@ a {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+.text-wrap {
+	word-wrap: break-word;
+	word-break: normal;
+}
