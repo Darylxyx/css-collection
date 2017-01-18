@@ -72,6 +72,14 @@ a {
 	line-height: 150%;
 }
 
+.lh-170 {
+	line-height: 170%;
+}
+
+.lh-200 {
+	line-height: 200%;
+}
+
 .inline-block {
 	display: inline-block;
 }
