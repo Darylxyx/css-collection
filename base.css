@@ -72,6 +72,14 @@ a {
 	line-height: 150%;
 }
 
+.lh-170 {
+	line-height: 170%;
+}
+
+.lh-200 {
+	line-height: 200%;
+}
+
 .inline-block {
 	display: inline-block;
 }
@@ -105,4 +113,9 @@ a {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.text-wrap {
+	word-wrap: break-word;
+	word-break: normal;
 }
