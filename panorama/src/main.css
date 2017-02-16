@@ -11,7 +11,7 @@ html, body, div {
 	top: 50%;
 	margin-left: -512px;
 	margin-top: -225px;
-	/*background-image: url(./0.jpg);*/
+	background-image: url(./0.jpg);
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	cursor: pointer;
