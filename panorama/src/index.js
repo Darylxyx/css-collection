@@ -1,5 +1,6 @@
 function SubType() {
 	this.$container = document.querySelector('#container');
+	this.$loading = document.querySelector('.loading');
 	this.I = 0;
 	this.J = 0;
 	this.rowNum = 10;
@@ -13,7 +14,7 @@ function SubType() {
 SubType.prototype = {
 	init: function() {
 		var img = new Image(),
-			url = './src/Group.jpg',
+			url = './src/images/Group.jpg',
 			_this = this;
 
 		img.onload = function() {
@@ -21,9 +22,10 @@ SubType.prototype = {
 
 			var hammer = new Hammer(_this.$container);
 
-			hammer.on('pan', function(e) {
-				// console.log(e);
+			_this.$loading.style.display = 'none';
 
+			hammer.on('pan', function(e) {
+				
 				if (e.deltaX > _this.prevX) {
 					_this.rotate('anti');
 				} else {
@@ -33,7 +35,8 @@ SubType.prototype = {
 				_this.prevX = e.deltaX;
 
 			});
-		}
+		};
+
 		img.src = url;
 		this.createMatrix();
 	},
@@ -69,23 +72,22 @@ SubType.prototype = {
 	createMatrix() {
 		this.matrix = [];
 
-		var arr = [],
-			_this = this;
+		var arr = [];
 
 		for (var i = 0; i < this.max; i ++) {
-			var position = '-' + _this.I * _this.conWidth + ' -' + _this.J * _this.conHeight;	
+			var position = '-' + this.I * this.conWidth + ' -' + this.J * this.conHeight;	
 			arr.push(position);
 
-			_this.I ++;
+			this.I ++;
 
-			if ((i+1) % _this.colNum == 0) {
-				_this.matrix.push(arr);
+			if ((i+1) % this.colNum == 0) {
+				this.matrix.push(arr);
 				arr = [];
-				_this.I = 0;
-				_this.J ++;
+				this.I = 0;
+				this.J ++;
 			}
 		}
-		// console.log(this.matrix);
+		console.log(this.matrix);
 		this.I = 0;
 		this.J = 0;
 	}

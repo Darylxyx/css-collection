@@ -3,7 +3,7 @@ var http = require("http"),
 
 var imgPath = 'http://img.lexus.do2014.cn/images/es/car/spoke10a/Red_Mica_Crystal_Shine/';
 
-fs.mkdir('./images', (err) => {
+fs.mkdir('./downloadImg', (err) => {
     if (err && err.code != 'EEXIST') return;
     downloadImg();
 });
@@ -14,7 +14,7 @@ function downloadImg() {
         // console.log(url);
         ((i) => {
              http.get(url, (res) => {
-                var out = fs.createWriteStream('./images/'+i+'.jpg', {
+                var out = fs.createWriteStream('./downloadImg/'+i+'.jpg', {
                     encoding: 'binary'
                 });
 
