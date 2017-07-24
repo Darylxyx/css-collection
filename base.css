@@ -79,6 +79,10 @@ a {
 	color: #c9c9c9;
 }
 
+.lh-100 {
+	line-height: 100%;
+}
+
 .lh-130 {
 	line-height: 130%;
 }
@@ -97,6 +101,14 @@ a {
 
 .lh-200 {
 	line-height: 200%;
+}
+
+.inline {
+	display: inline;
+}
+
+.block {
+	display: block;
 }
 
 .inline-block {
@@ -134,7 +146,31 @@ a {
 	text-overflow: ellipsis;
 }
 
+.text-indent {
+	text-indent: 2em;
+}
+
 .text-wrap {
 	word-wrap: break-word;
 	word-break: normal;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.relative {
+	position: relative;
+}
+
+.cusor {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
+}
+
+.opacity {
+	opacity: 0;
 }
