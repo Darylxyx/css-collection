@@ -1,7 +1,6 @@
 var http = require("http"),
     fs = require("fs");
-
-var imgPath = 'http://img.lexus.do2014.cn/images/es/car/spoke10a/Red_Mica_Crystal_Shine/';
+var imgPath = 'http://open.youtu.qq.com/content/img/product/face/face_';
 
 fs.mkdir('./downloadImg', (err) => {
     if (err && err.code != 'EEXIST') return;
@@ -9,12 +8,19 @@ fs.mkdir('./downloadImg', (err) => {
 });
 
 function downloadImg() {
-    for (var i = 0; i < 60; i ++) {
-        var url = imgPath + i + ".jpg!t1024x450.jpg";
+    for (var i = 0; i < 16; i ++) {
+
+        var index = (function() {
+            var j = i + 1;
+            j = j < 10 ? '0'+j : j;
+            return j;
+        })();
+
+        var url = imgPath + index + ".jpg?v=2.0";
         // console.log(url);
         ((i) => {
              http.get(url, (res) => {
-                var out = fs.createWriteStream('./downloadImg/'+i+'.jpg', {
+                var out = fs.createWriteStream('./downloadImg/face_'+i+'.jpg', {
                     encoding: 'binary'
                 });
 

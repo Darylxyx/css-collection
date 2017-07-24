@@ -3,11 +3,6 @@ html, body, div, h1, h2, h3, h4, h5, h6, p, span, img, input, textarea, ul, ol, 
 	padding: 0;
 }
 
-html, body {
-	font-size: 12px;
-	font-family: '微软雅黑', Arial, Helvetica;
-}
-
 ul, ol {
 	list-style-type: none;
 }

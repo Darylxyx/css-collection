@@ -87,7 +87,7 @@ SubType.prototype = {
 				this.J ++;
 			}
 		}
-		console.log(this.matrix);
+		// console.log(this.matrix);
 		this.I = 0;
 		this.J = 0;
 	}
