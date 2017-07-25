@@ -9,8 +9,22 @@ html, body, div {
 	padding-bottom: 450px;
 	background-color: #f7f7f7;
 	margin: 100px auto;
+	background-repeat: no-repeat;
 }
 
 .bg {
-	
+	background-image: url(./images/a.jpg), url(./images/b.jpg);
+	background-position: 0 0, 100% 0;
+	background-size: 50%;
+}
+
+/*.hide {
+	width: 0;
+	height: 0;
+	opacity: 0;
+}*/
+
+#myCanvas {
+	display: block;
+	margin: 100px auto;
 }
