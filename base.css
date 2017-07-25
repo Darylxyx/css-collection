@@ -11,6 +11,11 @@ a {
 	text-decoration: none;
 }
 
+hr {
+	border: none;
+	outline: none;
+}
+
 .l {
 	float: left;
 }
@@ -116,6 +121,7 @@ a {
 }
 
 .border-box {
+	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
@@ -161,6 +167,10 @@ a {
 
 .relative {
 	position: relative;
+}
+
+.fixed {
+	position: fixed;
 }
 
 .cusor {
