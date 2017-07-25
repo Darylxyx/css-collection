@@ -18,13 +18,14 @@ html, body, div {
 	background-size: 50%;
 }
 
-/*.hide {
+.hide {
 	width: 0;
 	height: 0;
 	opacity: 0;
-}*/
+}
 
 #myCanvas {
 	display: block;
-	margin: 100px auto;
+	margin: 100px auto 0 auto;
+	transform: translate3d(0,0,0);
 }

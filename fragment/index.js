@@ -2,7 +2,8 @@ window.onload = function() {
 
     function SubType() {
     	var doc = document;
-    	this.ctx = doc.querySelector('#myCanvas').getContext('2d');
+    	this.cvs = doc.querySelector('#myCanvas');
+    	this.ctx = this.cvs.getContext('2d');
     	this.imgList = doc.querySelectorAll('.img');
 
     	this.currentImg = null;
@@ -39,38 +40,80 @@ window.onload = function() {
     		this.ctx.stroke();
     	},
 
+    	start(i, j, callback) {
+    		var _this = this,
+    			dst = 0,
+    			intervalObj = setInterval(function() {
+	    			var resArr = _this.countAround(i, j, dst);
+
+	    			resArr.forEach(function(item, index) {
+	    				_this.handleDraw(app.imgList[1], item.x, item.y);
+	    			});
+	    			
+	    			if (!resArr.length) {
+	    				clearInterval(intervalObj);
+	    				return callback();
+	    			}
+	    			dst ++;
+	    		}, 20);
+    	},
+
+    	handleClick(e) {
+    		var offsetX = e.offsetX,
+    			offsetY = e.offsetY,
+    			j = Math.floor(offsetX / this.dw),
+    			i = Math.floor(offsetY / this.dh);
+
+    		// console.log(i, j);
+
+    		this.start(i, j, function() {
+    			
+    		});
+
+    	},
+
     	handleDraw(nextImg, i, j) { //负责绘制，nextImg: 下张图片；i: 单元行号；j: 单元列号
     		var _this = this,
     			actH = this.dh,
-    			turnFlag = false,
-    			img = this.currentImg,
-    			intervalObj = setInterval(function() {
-    				_this.ctx.clearRect(_this.dw*j, _this.dh*i, _this.dw, _this.dh);
+    			turnFlag = false;
 
-    				if (actH <= 0) {
-    					turnFlag = true;
-    					img = nextImg;
-    				}
+    			this.ctx.clearRect(this.dw*j, this.dh*i, this.dw, this.dh);
 
-    				if (turnFlag && actH >= _this.dh) {
-    					clearInterval(intervalObj);
-    				}
+    			this.ctx.drawImage(nextImg, this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, actH);
 
-    				turnFlag ? actH += 1 : actH -= 1;
+    			// intervalObj = setInterval(function() {
+    			// 	_this.ctx.clearRect(_this.dw*j, _this.dh*i, _this.dw, _this.dh);
 
-    				_this.ctx.drawImage(img, _this.DW*j, _this.DH*i, _this.DW, _this.DH, _this.dw*j, _this.dh*i, _this.dw, actH);
+    			// 	if (actH <= 0) {
+    			// 		turnFlag = true;
+    			// 		img = nextImg;
+    			// 	}
 
-    			}, 2);
+    			// 	if (turnFlag && actH >= _this.dh) {
+    			// 		clearInterval(intervalObj);
+    			// 	}
+
+    			// 	turnFlag ? actH += 50 : actH -= 50;
+
+    			// 	actH = actH > _this.dh ? _this.dh : actH;
+
+    			// 	_this.ctx.drawImage(img, _this.DW*j, _this.DH*i, _this.DW, _this.DH, _this.dw*j, _this.dh*i, _this.dw, actH);
+
+    			// }, 20);
     	},
 
-    	countAround(i, j) {
-    		console.log(i, j);
+    	countAround(i, j, dst) {
+    		// console.log(i, j);
     		var resArr = [];
-    		// resArr.push(i-1+','+j);
-    		// resArr.push(i+1+','+j);
-    		// resArr.push(i+','+(j-1));
-    		// resArr.push(i+','+(j+1));
+    		for (var m = (i-dst); m <= (i+dst); m++) {
+    			for (var n = (j-dst); n <= (j+dst); n++) {
+    				if ((Math.abs(m-i) + Math.abs(n-j) == dst) && (m >=0 && n >= 0) && (m <= (this.I-1) && n <= (this.J-1))) {
+    					resArr.push({x: m, y: n});
+    				}
+    			}
+    		}
     		// console.log(resArr);
+    		return resArr;
     	}
     };
 
@@ -78,7 +121,12 @@ window.onload = function() {
 
     app.init();
 
-   	app.handleDraw(app.imgList[1], 3, 7);
+    app.cvs.onclick = function(e) {
+    	app.handleClick(e);
+    }
 
-   	app.countAround(3, 3);
+   	// app.handleDraw(app.imgList[1], 3, 7);
+
+   	// app.start(15,0);
+
 };
