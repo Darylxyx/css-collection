@@ -31,7 +31,7 @@ window.onload = function() {
 
     		for (var i = 0; i < this.I; i ++) {
     			for (var j = 0; j < this.J; j ++) {
-    				this.ctx.drawImage(this.currentImg, this.DH*j, this.DW*i, this.DW, this.DH, this.dh*j, this.dw*i, this.dw, this.dh);
+    				this.ctx.drawImage(this.currentImg, this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, this.dh);
     			}
     		}
 
@@ -45,7 +45,7 @@ window.onload = function() {
     			turnFlag = false,
     			img = this.currentImg,
     			intervalObj = setInterval(function() {
-    				_this.ctx.clearRect(_this.dw*i, _this.dh*j, _this.dw, _this.dh);
+    				_this.ctx.clearRect(_this.dw*j, _this.dh*i, _this.dw, _this.dh);
 
     				if (actH <= 0) {
     					turnFlag = true;
@@ -58,9 +58,19 @@ window.onload = function() {
 
     				turnFlag ? actH += 1 : actH -= 1;
 
-    				_this.ctx.drawImage(img, _this.DH*j, _this.DW*i, _this.DW, _this.DH, _this.dh*j, _this.dw*i, _this.dw, actH);
+    				_this.ctx.drawImage(img, _this.DW*j, _this.DH*i, _this.DW, _this.DH, _this.dw*j, _this.dh*i, _this.dw, actH);
 
     			}, 2);
+    	},
+
+    	countAround(i, j) {
+    		console.log(i, j);
+    		var resArr = [];
+    		// resArr.push(i-1+','+j);
+    		// resArr.push(i+1+','+j);
+    		// resArr.push(i+','+(j-1));
+    		// resArr.push(i+','+(j+1));
+    		// console.log(resArr);
     	}
     };
 
@@ -68,7 +78,7 @@ window.onload = function() {
 
     app.init();
 
-    // app.currentImg = app.imgList[1];
+   	app.handleDraw(app.imgList[1], 3, 7);
 
-   	app.handleDraw(app.imgList[1], 0, 0);
+   	app.countAround(3, 3);
 };
