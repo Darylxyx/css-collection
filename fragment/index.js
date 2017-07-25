@@ -55,7 +55,7 @@ window.onload = function() {
 	    				return callback();
 	    			}
 	    			dst ++;
-	    		}, 20);
+	    		}, 30);
     	},
 
     	handleClick(e) {
@@ -67,7 +67,7 @@ window.onload = function() {
     		// console.log(i, j);
 
     		this.start(i, j, function() {
-    			
+
     		});
 
     	},

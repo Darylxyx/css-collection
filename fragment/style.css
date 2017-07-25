@@ -28,4 +28,5 @@ html, body, div {
 	display: block;
 	margin: 100px auto 0 auto;
 	transform: translate3d(0,0,0);
+	cursor: pointer;
 }
