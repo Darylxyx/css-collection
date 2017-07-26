@@ -8,14 +8,13 @@ html, body, div {
 	height: 100%;
 	overflow: hidden;
 	background-repeat: no-repeat;
-	background-position: center top;
+	background-position: center;
 	background-image: url(./images/bg.jpg);
-	-webkit-filter: blur(3px);
-    -moz-filter: blur(3px);
-    -ms-filter: blur(3px);
-    -o-filter: blur(3px);
-    filter: blur(3px);
-    box-shadow: 0 3px 20px rgba(0,0,0,0.7);
+	-webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    -o-filter: blur(2px);
+    filter: blur(2px);
 }
 
 .hide {
@@ -33,4 +32,5 @@ html, body, div {
 	display: block;
 	cursor: pointer;
 	border-radius: 6px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }

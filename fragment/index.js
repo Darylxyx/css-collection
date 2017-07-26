@@ -7,6 +7,7 @@ window.onload = function() {
     	this.imgList = doc.querySelectorAll('.img');
     	this.imgIndex = 0;
     	this.isAnimating = false;
+        this.autoPlayObj = null;
 
     	this.imgW = 1920; //图片原始宽/高
     	this.imgH = 1080;
@@ -14,7 +15,7 @@ window.onload = function() {
     	this.conW = 800; //画布宽/高
     	this.conH = 450;
 
-    	this.dw = 25; //画面单元宽/高
+    	this.dw = 25; //画布单元宽/高
     	this.dh = 25;
 
     	this.I = this.conH / this.dh; //单元行/列数
@@ -22,6 +23,32 @@ window.onload = function() {
 
     	this.DW = this.imgW / this.J; //原图单元宽/高
     	this.DH = this.imgH / this.I;
+
+        this.randomPoint = [{
+            x: 0,
+            y: 0
+        }, {
+            x: this.I - 1,
+            y: 0
+        }, {
+            x: 0,
+            y: this.J - 1
+        }, {
+            x: this.I - 1,
+            y: this.J - 1
+        }, {
+            x: 0,
+            y: Math.ceil(this.J / 2)
+        }, {
+            x: this.I - 1,
+            y: Math.ceil(this.J / 2)
+        }, {
+            x: Math.ceil(this.I / 2),
+            y: 0
+        }, {
+            x: Math.ceil(this.I / 2),
+            y: this.J - 1
+        }]
     }
 
     SubType.prototype = {
@@ -31,15 +58,21 @@ window.onload = function() {
 
     		for (var i = 0; i < this.I; i ++) {
     			for (var j = 0; j < this.J; j ++) {
-    				this.ctx.drawImage(this.imgList[this.imgIndex], this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, this.dh);
+                    this.handleDraw(this.imgList[this.imgIndex], i, j);
     			}
     		}
 
     		this.ctx.closePath();
     		this.ctx.stroke();
+
+            this.autoPlay();
     	},
 
     	start(i, j, callback) {
+
+            if (this.isAnimating) return;
+
+            this.isAnimating = true;
 
     		this.imgIndex ++;
 
@@ -51,12 +84,14 @@ window.onload = function() {
 	    			var resArr = _this.countAround(i, j, dst);
 
 	    			resArr.forEach(function(item, index) {
-	    				_this.handleDraw(app.imgList[_this.imgIndex], item.x, item.y);
+                        _this.handleClear(item.x, item.y);
+	    				_this.handleDraw(_this.imgList[_this.imgIndex], item.x, item.y);
 	    			});
 	    			
 	    			if (!resArr.length) {
 	    				clearInterval(intervalObj);
-	    				return callback();
+                        _this.isAnimating = false;
+	    				return  callback && callback();
 	    			}
 	    			dst ++;
 	    		}, 20);
@@ -64,53 +99,36 @@ window.onload = function() {
 
     	handleClick(e) {
 
-    		if (this.isAnimating) return;
-
     		var offsetX = e.offsetX,
     			offsetY = e.offsetY,
     			j = Math.floor(offsetX / this.dw),
     			i = Math.floor(offsetY / this.dh),
     			_this = this;
 
-    		// console.log(i, j);
-
-    		this.isAnimating = true;
+            clearInterval(this.autoPlayObj);
 
     		this.start(i, j, function() {
-    			_this.isAnimating = false;
-    		});
-
+                _this.autoPlay();
+            });
     	},
 
-    	handleDraw(nextImg, i, j) { //负责绘制，nextImg: 下张图片；i: 单元行号；j: 单元列号
-    		var _this = this,
-    			actH = this.dh,
-    			turnFlag = false;
+        autoPlay() {
+            var _this = this;
+            this.autoPlayObj = setInterval(function() {
+                var randomIndex = Math.floor(Math.random()*_this.randomPoint.length),
+                    point = _this.randomPoint[randomIndex];
+                // console.log(point);
+                _this.start(point.x, point.y);
+            }, 3000);
+        },
 
-    			this.ctx.clearRect(this.dw*j, this.dh*i, this.dw, this.dh);
-
-    			this.ctx.drawImage(this.imgList[this.imgIndex], this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, actH);
-
-    			// intervalObj = setInterval(function() {
-    			// 	_this.ctx.clearRect(_this.dw*j, _this.dh*i, _this.dw, _this.dh);
-
-    			// 	if (actH <= 0) {
-    			// 		turnFlag = true;
-    			// 		img = nextImg;
-    			// 	}
-
-    			// 	if (turnFlag && actH >= _this.dh) {
-    			// 		clearInterval(intervalObj);
-    			// 	}
-
-    			// 	turnFlag ? actH += 50 : actH -= 50;
-
-    			// 	actH = actH > _this.dh ? _this.dh : actH;
-
-    			// 	_this.ctx.drawImage(img, _this.DW*j, _this.DH*i, _this.DW, _this.DH, _this.dw*j, _this.dh*i, _this.dw, actH);
-
-    			// }, 20);
+    	handleDraw(img, i, j) { //负责绘制，i: 单元行号；j: 单元列号
+    			this.ctx.drawImage(img, this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, this.dh);
     	},
+
+        handleClear(i, j) {
+            this.ctx.clearRect(this.dw*j, this.dh*i, this.dw, this.dh);
+        },
 
     	countAround(i, j, dst) {
     		// console.log(i, j);
@@ -134,9 +152,4 @@ window.onload = function() {
     app.cvs.onclick = function(e) {
     	app.handleClick(e);
     }
-
-   	// app.handleDraw(app.imgList[1], 3, 7);
-
-   	// app.start(15,0);
-
 };
