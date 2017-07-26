@@ -5,8 +5,7 @@ window.onload = function() {
     	this.cvs = doc.querySelector('#myCanvas');
     	this.ctx = this.cvs.getContext('2d');
     	this.imgList = doc.querySelectorAll('.img');
-
-    	this.currentImg = null;
+    	this.imgIndex = 0;
 
     	this.imgW = 1920; //图片原始宽/高
     	this.imgH = 1080;
@@ -26,13 +25,12 @@ window.onload = function() {
 
     SubType.prototype = {
     	init() {
-    		this.currentImg = this.imgList[0];
 
     		this.ctx.beginPath();
 
     		for (var i = 0; i < this.I; i ++) {
     			for (var j = 0; j < this.J; j ++) {
-    				this.ctx.drawImage(this.currentImg, this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, this.dh);
+    				this.ctx.drawImage(this.imgList[this.imgIndex], this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, this.dh);
     			}
     		}
 
@@ -41,13 +39,18 @@ window.onload = function() {
     	},
 
     	start(i, j, callback) {
+
+    		this.imgIndex ++;
+
+    		if (this.imgIndex > (this.imgList.length - 1)) this.imgIndex = 0;
+
     		var _this = this,
     			dst = 0,
     			intervalObj = setInterval(function() {
 	    			var resArr = _this.countAround(i, j, dst);
 
 	    			resArr.forEach(function(item, index) {
-	    				_this.handleDraw(app.imgList[1], item.x, item.y);
+	    				_this.handleDraw(app.imgList[_this.imgIndex], item.x, item.y);
 	    			});
 	    			
 	    			if (!resArr.length) {
@@ -79,7 +82,7 @@ window.onload = function() {
 
     			this.ctx.clearRect(this.dw*j, this.dh*i, this.dw, this.dh);
 
-    			this.ctx.drawImage(nextImg, this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, actH);
+    			this.ctx.drawImage(this.imgList[this.imgIndex], this.DW*j, this.DH*i, this.DW, this.DH, this.dw*j, this.dh*i, this.dw, actH);
 
     			// intervalObj = setInterval(function() {
     			// 	_this.ctx.clearRect(_this.dw*j, _this.dh*i, _this.dw, _this.dh);
