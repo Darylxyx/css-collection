@@ -3,30 +3,34 @@ html, body, div {
 	padding: 0;
 }
 
-.content {
-	width: 800px;
-	height: 0;
-	padding-bottom: 450px;
-	background-color: #f7f7f7;
-	margin: 100px auto;
+.container {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 	background-repeat: no-repeat;
-}
-
-.bg {
-	background-image: url(./images/a.jpg), url(./images/b.jpg);
-	background-position: 0 0, 100% 0;
-	background-size: 50%;
+	background-position: center top;
+	background-image: url(./images/bg.jpg);
+	-webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);
+    -o-filter: blur(3px);
+    filter: blur(3px);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.7);
 }
 
 .hide {
 	width: 0;
 	height: 0;
-	opacity: 0;
+	display: none;
 }
 
 #myCanvas {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -400px;
+	margin-top: -250px;
 	display: block;
-	margin: 100px auto 0 auto;
-	transform: translate3d(0,0,0);
 	cursor: pointer;
+	border-radius: 6px;
 }

@@ -6,6 +6,7 @@ window.onload = function() {
     	this.ctx = this.cvs.getContext('2d');
     	this.imgList = doc.querySelectorAll('.img');
     	this.imgIndex = 0;
+    	this.isAnimating = false;
 
     	this.imgW = 1920; //图片原始宽/高
     	this.imgH = 1080;
@@ -13,8 +14,8 @@ window.onload = function() {
     	this.conW = 800; //画布宽/高
     	this.conH = 450;
 
-    	this.dw = 50; //画面单元宽/高
-    	this.dh = 50;
+    	this.dw = 25; //画面单元宽/高
+    	this.dh = 25;
 
     	this.I = this.conH / this.dh; //单元行/列数
     	this.J = this.conW / this.dw;
@@ -58,19 +59,25 @@ window.onload = function() {
 	    				return callback();
 	    			}
 	    			dst ++;
-	    		}, 30);
+	    		}, 20);
     	},
 
     	handleClick(e) {
+
+    		if (this.isAnimating) return;
+
     		var offsetX = e.offsetX,
     			offsetY = e.offsetY,
     			j = Math.floor(offsetX / this.dw),
-    			i = Math.floor(offsetY / this.dh);
+    			i = Math.floor(offsetY / this.dh),
+    			_this = this;
 
     		// console.log(i, j);
 
-    		this.start(i, j, function() {
+    		this.isAnimating = true;
 
+    		this.start(i, j, function() {
+    			_this.isAnimating = false;
     		});
 
     	},
